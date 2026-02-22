@@ -1,1 +1,1 @@
-# SearchEngine_-_InformationRetrieval
+# SearchEngine_&_InformationRetrieval
