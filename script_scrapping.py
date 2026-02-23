@@ -10,7 +10,8 @@ def main():
     if (arg_len != 2):
         print("Kindly Enter the url first")
         sys.exit(1)
-
+        
+# Taking URL from command line
     url = sys.argv[1].strip()
     print("Your entered url is: " ,url)
 
@@ -18,6 +19,7 @@ def main():
     # get_response = requests.get(url)
     # print(get_response.text)
 
+ # fetching the webpage
     try:
         get_response = requests.get(url)
     except:
@@ -47,12 +49,16 @@ def main():
 
 
     print("\n")
+
+# Storing unique links using set
     links_set =set()
     links = soup.find_all("a")      #BeautifulSoup tag object
     for link in links:
         href = link.get("href")
         if href is not None:
             links_set.add(href)
+
+# Printing all links
     
     print("Set of unique links is:")
     # Print all the links
