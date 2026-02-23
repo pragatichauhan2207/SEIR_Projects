@@ -2,6 +2,7 @@ import re,requests,sys
 from bs4 import BeautifulSoup
 
 
+# Calculating hash value using rolling_hashFn for a word
 def rolling_hash_fn(word):
     p = 53
     m = 2**64
@@ -15,6 +16,7 @@ def rolling_hash_fn(word):
     return hash_val % m
 
 
+# COmputing Simhash of body Text
 def Simhash(body):
 
     bit = 64
@@ -36,6 +38,9 @@ def Simhash(body):
     #     count += 1
     #     if count==10:
     #         break
+
+
+     # Create a vector of 64 zeros
     
     vector_bit =[0] * bit
     for word in word_count:
@@ -49,7 +54,7 @@ def Simhash(body):
             else:
                 vector_bit[i] -= freq
 
-        
+# Converting vector into final simhash
     simhash = 0
     for i in range(bit):
         if vector_bit[i] >= 0:
@@ -58,7 +63,7 @@ def Simhash(body):
     return simhash
 
 
-
+#calculating number of common bits between two hashes
 def bits_common(hash1, hash2, total_bits):
 
     xor = hash1 ^ hash2
@@ -71,7 +76,8 @@ def bits_common(hash1, hash2, total_bits):
 
     common_bits = total_bits - count
     return common_bits
-
+    
+#Extracting body text from URL
 def extract_body(url):
 
     try:
