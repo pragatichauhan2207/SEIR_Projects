@@ -37,3 +37,16 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import re
+
+```
+---
+## How to Run
+1 Install Required Libraries
+```python
+pip install beautifulsoup4 requests
+```
+2 Run the Script
+```
+python3 Scrapping2.py <URL>
+python3 Scrapping2.py https://example.com #eg
+```
