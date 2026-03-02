@@ -1,56 +1,39 @@
 # SearchEngine_&_InformationRetrieval
-## Topic -- Web Page Analyzer with Simhash
-This project analyzes web pages using web scraping techniques and computes document similarity using Simhash.
+
+## Topic -- Web Page Scraper
+
+This project scrapes a web page using web scraping techniques and extracts useful information from a given URL.
+
+---
+
+##  Project Description
 
 The program:
-- Extracts body text from two given URLs
-- Counts word frequency (case-insensitive, alphanumeric words)
-- Computes a 64-bit polynomial rolling hash for each word
-- Generates a 64-bit Simhash fingerprint
-- Compares similarity using Hamming distance
 
-  ## Concepts Used
+- Accepts a single URL as a command-line argument
+- Fetches webpage content using an HTTP request
+- Extracts the page title
+- Extracts complete body text
+- Extracts all unique hyperlinks from the page
+- Handles errors gracefully if the URL is invalid
+
+---
+
+## Concepts Used
 
 - Web Scraping (BeautifulSoup, requests)
-- Regular Expressions (word extraction)
-- Polynomial Rolling Hash (p = 53, mod 2^64)
-- Simhash Algorithm
-- Bitwise Operations (XOR, shift, OR)
+- HTML Parsing
+- Command Line Arguments (`sys`)
+- Exception Handling
+- Sets (for storing unique links)
+- Basic String Handling
 
-## How to Run
+---
 
-```bash
-python3 Scrapping2.py <URL1> <URL2>   #(for HashVal Script)
-python3 Scrapping2.py https://example.com https://example.com  #Eg
-```
+## Libraries Used
 
-## Output Explanation
-
-## Output
-
-- Simhash value of both URLs
-- Number of common bits
-- Similarity percentage
-
-```bash
-python3 Scrapping2.py <URL1>   #(for Scrapping Script)
-python3 Scrapping2.py https://example.com #Eg
-```
-
-## Assumptions
-
-- Only body text is used for similarity computation.
-- Words are defined as sequences of alphanumeric characters.
-- Case is ignored.
-- Similarity is based on 64-bit Simhash comparison.
-- bits = 64
-
-## Time Complexity
-
-Let:
-- N = number of words in document
-- U = number of unique words
-
-Word counting: O(N)  
-Simhash computation: O(U × bits)  
-Hamming distance: O(bits)
+```python
+from bs4 import BeautifulSoup
+import requests
+import sys
+import re
